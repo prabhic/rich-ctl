@@ -1,3 +1,6 @@
+Note: I wanted indic langauge support for python based console applications. Rich library is a great library for console applications. But it does not support complex scripts. So I created this library.
+So just tryied this, project. But not solved the essental issue. I think Terminal rendering is not supporting complex scripts. Still investigation to be done what else can be done.
+
 # rich-ctl
 
 A lightweight Python library that extends [Rich](https://github.com/Textualize/rich) and Textual to provide **Complex Text Layout (CTL)** support for Indic, Arabic, Hebrew, and other scripts.
