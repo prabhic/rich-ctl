@@ -1,0 +1,69 @@
+# .windsurf
+# Workflow guardrails for TASK.md, PRD.md, and ai_learnings.md
+# Symbols:   [ ] = not‑started   [x] = in‑progress   [*] = completed
+#
+# ────────────────────────────────────────────────────────────────
+# 1. WHEN A NEW TASK ARRIVES
+# ────────────────────────────────────────────────────────────────
+1. Locate its FEATURE in PRD.md.
+   • If FEATURE ⬠ missing → ask: “Should I add FEATURE ‹name› to PRD.md?”
+     ⟹ Wait for answer; then add or abort.
+2. Confirm TASK is listed under that FEATURE in TASK.md.
+   • If absent → create it with status [ ].
+3. Start work → change status to [x].
+
+# ────────────────────────────────────────────────────────────────
+# 2. WHEN CLOSING A TASK
+# ────────────────────────────────────────────────────────────────
+1. Verify acceptance criteria met.
+2. Switch status [x] → [*].
+
+# ────────────────────────────────────────────────────────────────
+# 3. IF TASK TYPE = “FIX ISSUE”
+# ────────────────────────────────────────────────────────────────
+1. Diagnose **root cause**   → document in commit / PR description.  
+2. Define **preventive step** so generator/code avoids it next time.  
+3. Append an entry to ai_learnings.md (see template).
+
+# ────────────────────────────────────────────────────────────────
+# 4. ANY NEW BEST PRACTICE / INSIGHT
+# ────────────────────────────────────────────────────────────────
+1. Add sequential bullet to ai_learnings.md:
+   ┌─ template ──────────────────────────────────────────────────
+   ## N. ‹Title / One‑liner›
+   **Context:** why it surfaced  
+   **Incorrect:** ‹bad‑code›  
+   **Correct:** ‹good‑code›  
+   **Best‑Practice:** 1‑3 takeaways  
+   **Refs:** link(s) / doc id(s)
+   └─────────────────────────────────────────────────────────────
+```
+
+---
+
+## Example *ai\_learnings.md* entry
+
+````markdown
+## 1. Missing Null‑Check in Config Loader
+**Context:** Crash when TASK.md path not set  
+**Incorrect:**
+```py
+cfg = load_cfg(path)          # throws if path None
+````
+
+**Correct:**
+
+```py
+if path:
+    cfg = load_cfg(path)
+else:
+    raise ValueError("TASK.md path missing")
+```
+
+**Best Practice:**
+
+1. Validate external inputs at module boundary.
+2. Fail fast with clear error messages.
+   **Refs:** Python docs § Errors & Exceptions, PR #42
+
+```

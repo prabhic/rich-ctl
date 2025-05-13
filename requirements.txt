@@ -1,0 +1,6 @@
+rich>=13.0
+uharfbuzz>=0.37.0
+regex>=2022.1.18
+python-bidi>=0.4.2
+pytest>=7.0.0
+pytest-cov>=4.0.0
