@@ -1,3 +1,5 @@
+[WIP - Current Status - rich ctl works, But as long as terminal itself doesn't have full support, still I see issue, so essentailly this is not yet solving issue]
+
 Note: I wanted indic langauge support for python based console applications. Rich library is a great library for console applications. But it does not support complex scripts. So I created this library.
 So just tryied this, project. But not solved the essental issue. I think Terminal rendering is not supporting complex scripts. Still investigation to be done what else can be done.
 
